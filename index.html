@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/jpg" href="https://media.istockphoto.com/id/1439973042/es/vector/icono-plano-de-coraz%C3%B3n-rojo-el-s%C3%ADmbolo-del-amor-ilustraci%C3%B3n-vectorial.jpg?s=612x612&w=0&k=20&c=jBR9ICw7P_X7M4NIboEu17ZTjCxsxZE2GN8FOIRWqeg=">
   <title>Te Amo Saso</title>
+  <link rel="icon" type="image/jpg" href="https://media.istockphoto.com/id/1439973042/es/vector/icono-plano-de-coraz%C3%B3n-rojo-el-s%C3%ADmbolo-del-amor-ilustraci%C3%B3n-vectorial.jpg?s=612x612&w=0&k=20&c=jBR9ICw7P_X7M4NIboEu17ZTjCxsxZE2GN8FOIRWqeg=">
   <style>
     body {
       margin: 0;
@@ -25,25 +25,31 @@
       cursor: pointer;
       background-color: #a113f3;
       color: white;
-      border: none black;
+      border: none;
       border-radius: 5px;
-      transition: background-color 0.3s;
       z-index: 10;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #8000c9;
     }
 
     .frase {
       position: absolute;
       font-size: 20px;
       color: #333;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       padding: 10px 15px;
-      border-radius: 8px;
+      border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       white-space: nowrap;
+    }
+
+    .imagen {
+      position: absolute;
+      width: 100px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
   </style>
 </head>
@@ -53,48 +59,55 @@
 
   <script>
     const frases = [
-    "Te amo mucho.",
-    "Eres Suficiente.",
-    "Eres Preciosa.",
-    "Eres Inteligente.",
-    "Eres Perfecta.",
-    "Eres Unica",
-    "Tienes una linda figura.",
-    "Eres muy buena novia",
-    "Tienes una Hermosa sonrisa",
-    "Tienes unos ojos preciosos",
-    "No hay nadie mejor que tu",
-    "Eres mi voleybolista favorita",
-    "Tú puedes",
-    "Confía en ti",
-    "Te mereces lo mejor",
-    "Mi mundo mejora contigo",
-    "Eres mi paz",
-    "Eres mi lugar favorito",
-    "Contigo me siento seguro",
-    "💓",
-    "💗"
+      "Te amo mucho.",
+      "Eres Suficiente.",
+      "Eres Preciosa.",
+      "Eres Inteligente.",
+      "Eres Perfecta.",
+      "Eres Única.",
+      "Tienes una linda figura.",
+      "Eres muy buena novia.",
+      "Tienes una hermosa sonrisa.",
+      "Tienes unos ojos preciosos.",
+      "No hay nadie mejor que tú.",
+      "Eres mi voleybolista favorita.",
+      "Tú puedes.",
+      "Confía en ti.",
+      "Te mereces lo mejor.",
+      "Mi mundo mejora contigo.",
+      "Eres mi paz.",
+      "Eres mi lugar favorito.",
+      "Contigo me siento seguro.",
+      "💗"
+    ];
+
+    const imagenes = [
+      "img/f1.jpg", "img/f2.jpg", "img/f3.jpg", "img/f4.jpg", "img/f5.jpg",
+      "img/f6.jpg", "img/f7.jpg", "img/f8.jpg", "img/f9.jpg", "img/f10.jpg",
+      "img/f11.jpg", "img/f12.jpg", "img/f13.jpg", "img/f14.jpg", "img/f15.jpg",
+      "img/f16.jpg", "img/f17.jpg", "img/f18.jpg", "img/f19.jpg", "img/f20.jpg",
     ];
 
     let indice = 0;
 
     document.getElementById('mostrarFrase').addEventListener('click', () => {
-      const nuevaFrase = document.createElement('div');
-      nuevaFrase.classList.add('frase');
-      nuevaFrase.textContent = frases[indice];
+      const frase = frases[indice];
+      const imagenSrc = imagenes[indice];
       indice = (indice + 1) % frases.length;
 
-      // Generar posiciones aleatorias dentro del tamaño de la ventana
-      const maxWidth = window.innerWidth - 200; // margen para no salirse
-      const maxHeight = window.innerHeight - 50;
-
-      const randomX = Math.floor(Math.random() * maxWidth);
-      const randomY = Math.floor(Math.random() * maxHeight);
-
-      nuevaFrase.style.left = `${randomX}px`;
-      nuevaFrase.style.top = `${randomY}px`;
-
+      const nuevaFrase = document.createElement('div');
+      nuevaFrase.classList.add('frase');
+      nuevaFrase.textContent = frase;
+      nuevaFrase.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+      nuevaFrase.style.top = `${Math.random() * (window.innerHeight - 60)}px`;
       document.body.appendChild(nuevaFrase);
+
+      const nuevaImagen = document.createElement('img');
+      nuevaImagen.src = imagenSrc;
+      nuevaImagen.classList.add('imagen');
+      nuevaImagen.style.left = `${Math.random() * (window.innerWidth - 120)}px`;
+      nuevaImagen.style.top = `${Math.random() * (window.innerHeight - 120)}px`;
+      document.body.appendChild(nuevaImagen);
     });
   </script>
 
